@@ -19,7 +19,7 @@ class Pacman {
     this.setDefaultPosition(this.scaledTileSize);
     this.setSpriteSheet(this.direction);
     this.pacmanArrow.style.backgroundImage = 'url(app/style/graphics/'
-      + `spriteSheets/characters/pacman/arrow_${this.direction}.png)`;
+      + `spriteSheets/characters/pacman/arrow_${this.direction}.svg)`;
   }
 
   /**
@@ -123,7 +123,7 @@ class Pacman {
   changeDirection(newDirection, startMoving) {
     this.desiredDirection = newDirection;
     this.pacmanArrow.style.backgroundImage = 'url(app/style/graphics/'
-      + `spriteSheets/characters/pacman/arrow_${this.desiredDirection}.png)`;
+      + `spriteSheets/characters/pacman/arrow_${this.desiredDirection}.svg)`;
 
     if (startMoving) {
       this.moving = true;

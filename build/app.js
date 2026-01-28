@@ -819,7 +819,7 @@ class Pacman {
     this.setDefaultPosition(this.scaledTileSize);
     this.setSpriteSheet(this.direction);
     this.pacmanArrow.style.backgroundImage = 'url(app/style/graphics/'
-      + `spriteSheets/characters/pacman/arrow_${this.direction}.png)`;
+      + `spriteSheets/characters/pacman/arrow_${this.direction}.svg)`;
   }
 
   /**
@@ -923,7 +923,7 @@ class Pacman {
   changeDirection(newDirection, startMoving) {
     this.desiredDirection = newDirection;
     this.pacmanArrow.style.backgroundImage = 'url(app/style/graphics/'
-      + `spriteSheets/characters/pacman/arrow_${this.desiredDirection}.png)`;
+      + `spriteSheets/characters/pacman/arrow_${this.desiredDirection}.svg)`;
 
     if (startMoving) {
       this.moving = true;
@@ -1452,7 +1452,7 @@ class GameCoordinator {
     this.activeTimers = [];
     this.points = 0;
     this.level = 1;
-    this.lives = 0; // TODO: reset to 2 for normal gameplay
+    this.lives = 2; // TODO: reset to 2 for normal gameplay
     this.extraLifeGiven = false;
     this.remainingDots = 0;
     this.allowKeyPresses = true;

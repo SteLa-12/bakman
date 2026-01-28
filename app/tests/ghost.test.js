@@ -74,7 +74,7 @@ describe('ghost', () => {
     it('sets various stats for the ghost\'s sprite animation', () => {
       comp.setSpriteAnimationStats();
 
-      assert.strictEqual(comp.msBetweenSprites, 250);
+      assert.strictEqual(comp.msBetweenSprites, 500);
       assert.strictEqual(comp.msSinceLastSprite, 0);
       assert.strictEqual(comp.spriteFrames, 2);
       assert.strictEqual(comp.backgroundOffsetPixels, 0);
