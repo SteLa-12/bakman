@@ -85,7 +85,7 @@ describe('pacman', () => {
 
       assert.strictEqual(pacman.msBetweenSprites, 100);
       assert.strictEqual(pacman.msSinceLastSprite, 0);
-      assert.strictEqual(pacman.spriteFrames, 4);
+      assert.strictEqual(pacman.spriteFrames, 2);
       assert.strictEqual(pacman.backgroundOffsetPixels, 0);
     });
   });

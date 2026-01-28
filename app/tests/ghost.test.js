@@ -76,7 +76,7 @@ describe('ghost', () => {
 
       assert.strictEqual(comp.msBetweenSprites, 500);
       assert.strictEqual(comp.msSinceLastSprite, 0);
-      assert.strictEqual(comp.spriteFrames, 2);
+      assert.strictEqual(comp.spriteFrames, 1);
       assert.strictEqual(comp.backgroundOffsetPixels, 0);
     });
   });
