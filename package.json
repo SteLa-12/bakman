@@ -14,6 +14,7 @@
     "update": "ncu -i --format group",
     "serve": "node ./node_modules/http-server/bin/http-server",
     "watch": "gulp watch",
+    "dev": "concurrently \"gulp watch\" \"http-server -p 8080 -c-1\"",
     "prepare": "husky"
   },
   "engines": {
@@ -21,6 +22,7 @@
     "npm": ">=6.14.6"
   },
   "devDependencies": {
+    "concurrently": "^9.1.2",
     "eslint": "^8.57.1",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.32.0",

@@ -93,9 +93,9 @@ class Ghost {
     this.display = true;
     this.loopAnimation = true;
     this.animate = true;
-    this.msBetweenSprites = 250;
+    this.msBetweenSprites = 500;
     this.msSinceLastSprite = 0;
-    this.spriteFrames = 2;
+    this.spriteFrames = 1;
     this.backgroundOffsetPixels = 0;
     this.animationTarget.style.backgroundPosition = '0px 0px';
   }

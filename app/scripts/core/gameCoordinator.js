@@ -394,7 +394,7 @@ class GameCoordinator {
     this.activeTimers = [];
     this.points = 0;
     this.level = 1;
-    this.lives = 2;
+    this.lives = 0; // TODO: reset to 2 for normal gameplay
     this.extraLifeGiven = false;
     this.remainingDots = 0;
     this.allowKeyPresses = true;
@@ -919,6 +919,8 @@ class GameCoordinator {
   gameOver() {
     localStorage.setItem('highScore', this.highScore);
 
+    this.uploadHighScore();
+
     new Timer(() => {
       this.displayText(
         {
@@ -943,6 +945,26 @@ class GameCoordinator {
         }, 1000);
       }, 2500);
     }, 2250);
+  }
+
+  /**
+   * Upload highscore to server
+   */
+  uploadHighScore() {
+    const formData = new URLSearchParams({
+      'action': 'update_bakman_highscore',
+      'score': this.highScore,
+      'username': 'bakman' // localStorage.getItem('username') || 'Anonymous'
+    });
+
+    fetch('https://chiro-wijnegem.be/wp-admin/admin-ajax.php', {
+      method: 'POST',
+      mode: 'no-cors',
+      body: formData,
+    })
+      .catch((error) => {
+        console.error('Error uploading highscore:', error);
+      });
   }
 
   /**

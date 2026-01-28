@@ -226,7 +226,7 @@ body {
   animation: loading-animation 0.3s steps(4) infinite;
   background-color: #000;
   background-image: url("../app/style/graphics/spriteSheets/characters/pacman/pacman_right.svg");
-  background-size: 192px;
+  background-size: 96px;
   border-radius: 10px;
   height: 48px;
   position: absolute;
@@ -386,6 +386,7 @@ body {
 
 .maze-img {
   position: absolute;
+  -webkit-user-select: none;
   user-select: none;
   width: 100%;
 }

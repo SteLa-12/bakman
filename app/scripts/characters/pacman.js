@@ -19,7 +19,7 @@ class Pacman {
     this.setDefaultPosition(this.scaledTileSize);
     this.setSpriteSheet(this.direction);
     this.pacmanArrow.style.backgroundImage = 'url(app/style/graphics/'
-      + `spriteSheets/characters/pacman/arrow_${this.direction}.svg)`;
+      + `spriteSheets/characters/pacman/arrow_${this.direction}.png)`;
   }
 
   /**
@@ -41,9 +41,9 @@ class Pacman {
     this.display = true;
     this.animate = true;
     this.loopAnimation = true;
-    this.msBetweenSprites = 50;
+    this.msBetweenSprites = 100;
     this.msSinceLastSprite = 0;
-    this.spriteFrames = 4;
+    this.spriteFrames = 2;
     this.backgroundOffsetPixels = 0;
     this.animationTarget.style.backgroundPosition = '0px 0px';
   }
@@ -123,7 +123,7 @@ class Pacman {
   changeDirection(newDirection, startMoving) {
     this.desiredDirection = newDirection;
     this.pacmanArrow.style.backgroundImage = 'url(app/style/graphics/'
-      + `spriteSheets/characters/pacman/arrow_${this.desiredDirection}.svg)`;
+      + `spriteSheets/characters/pacman/arrow_${this.desiredDirection}.png)`;
 
     if (startMoving) {
       this.moving = true;

@@ -93,9 +93,9 @@ class Ghost {
     this.display = true;
     this.loopAnimation = true;
     this.animate = true;
-    this.msBetweenSprites = 250;
+    this.msBetweenSprites = 500;
     this.msSinceLastSprite = 0;
-    this.spriteFrames = 2;
+    this.spriteFrames = 1;
     this.backgroundOffsetPixels = 0;
     this.animationTarget.style.backgroundPosition = '0px 0px';
   }
@@ -819,7 +819,7 @@ class Pacman {
     this.setDefaultPosition(this.scaledTileSize);
     this.setSpriteSheet(this.direction);
     this.pacmanArrow.style.backgroundImage = 'url(app/style/graphics/'
-      + `spriteSheets/characters/pacman/arrow_${this.direction}.svg)`;
+      + `spriteSheets/characters/pacman/arrow_${this.direction}.png)`;
   }
 
   /**
@@ -841,9 +841,9 @@ class Pacman {
     this.display = true;
     this.animate = true;
     this.loopAnimation = true;
-    this.msBetweenSprites = 50;
+    this.msBetweenSprites = 100;
     this.msSinceLastSprite = 0;
-    this.spriteFrames = 4;
+    this.spriteFrames = 2;
     this.backgroundOffsetPixels = 0;
     this.animationTarget.style.backgroundPosition = '0px 0px';
   }
@@ -923,7 +923,7 @@ class Pacman {
   changeDirection(newDirection, startMoving) {
     this.desiredDirection = newDirection;
     this.pacmanArrow.style.backgroundImage = 'url(app/style/graphics/'
-      + `spriteSheets/characters/pacman/arrow_${this.desiredDirection}.svg)`;
+      + `spriteSheets/characters/pacman/arrow_${this.desiredDirection}.png)`;
 
     if (startMoving) {
       this.moving = true;
@@ -1452,7 +1452,7 @@ class GameCoordinator {
     this.activeTimers = [];
     this.points = 0;
     this.level = 1;
-    this.lives = 2;
+    this.lives = 0; // TODO: reset to 2 for normal gameplay
     this.extraLifeGiven = false;
     this.remainingDots = 0;
     this.allowKeyPresses = true;
@@ -1977,6 +1977,8 @@ class GameCoordinator {
   gameOver() {
     localStorage.setItem('highScore', this.highScore);
 
+    this.uploadHighScore();
+
     new Timer(() => {
       this.displayText(
         {
@@ -2001,6 +2003,26 @@ class GameCoordinator {
         }, 1000);
       }, 2500);
     }, 2250);
+  }
+
+  /**
+   * Upload highscore to server
+   */
+  uploadHighScore() {
+    const formData = new URLSearchParams({
+      'action': 'update_bakman_highscore',
+      'score': this.highScore,
+      'username': 'bakman' // localStorage.getItem('username') || 'Anonymous'
+    });
+
+    fetch('https://chiro-wijnegem.be/wp-admin/admin-ajax.php', {
+      method: 'POST',
+      mode: 'no-cors',
+      body: formData,
+    })
+      .catch((error) => {
+        console.error('Error uploading highscore:', error);
+      });
   }
 
   /**
