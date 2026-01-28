@@ -2010,19 +2010,16 @@ class GameCoordinator {
    */
   uploadHighScore() {
     const formData = new URLSearchParams({
-      'action': 'update_bakman_highscore',
-      'score': this.highScore,
-      'username': 'bakman' // localStorage.getItem('username') || 'Anonymous'
+      action: 'update_bakman_highscore',
+      score: this.highScore,
+      username: 'bakman', // localStorage.getItem('username') || 'Anonymous'
     });
 
     fetch('https://chiro-wijnegem.be/wp-admin/admin-ajax.php', {
       method: 'POST',
       mode: 'no-cors',
       body: formData,
-    })
-      .catch((error) => {
-        console.error('Error uploading highscore:', error);
-      });
+    });
   }
 
   /**
